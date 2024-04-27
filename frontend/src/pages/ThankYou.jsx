@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { SectionTitle } from "../components";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -43,28 +42,23 @@ const ThankYou = () => {
 
 
   return (
-    <>
-      <SectionTitle title="Thank You" path="Home | Cart | Thank you" />
-      <div className="thankyou-content text-center text-accent-content px-10 max-w-7xl mx-auto">
+    <section className="bg-[#FEFDED] h-[70vh] pt-10">
+      <div className="thankyou-content text-center text-[#40826D] px-10 max-w-7xl mx-auto">
         <h2 className="text-6xl max-sm:text-4xl">
           Thank you for your purchase!
         </h2>
 
         <h3 className="text-2xl mt-10 max-sm:text-xl">
-          We hope you love your new clothes and shoes! We appreciate your
-          business and look forward to seeing you again soon.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </h3>
         <h3 className="text-2xl mt-5 max-sm:text-xl">
           Here are some things you can do next:
         </h3>
-        <ul className="text-xl mt-5 text-blue-500 max-sm:text-lg">
-          <li className="hover:text-blue-600 cursor-pointer">
-            <Link to="/order-history">&rarr; See order history &larr;</Link>
-          </li>
-          <li className="hover:text-blue-600 cursor-pointer">
+        <ul className="text-xl mt-5 max-sm:text-lg">
+          <li className="text-[#40826D] hover:text-[#23473c] cursor-pointer">
             <Link to="/">&rarr; Browse more product and buy more &larr;</Link>
           </li>
-          <li className="hover:text-blue-600 cursor-pointer">
+          <li className="text-[#40826D] hover:text-[#23473c] cursor-pointer">
             &rarr; Follow us on social media &larr;
           </li>
         </ul>
@@ -73,10 +67,10 @@ const ThankYou = () => {
           Thank you again for your purchase!
         </h4>
         <h4 className="text-xl max-sm:text-lg">
-          Sincerely, The Kuzma Clothing & Shoes team
+          Sincerely, Organic Oasis.
         </h4>
       </div>
-    </>
+    </section>
   );
 };
 

@@ -9,16 +9,15 @@ import {
   Register,
   Shop,
   SingleProduct,
-  Wishlist,
   Profile,
   Search,
   ThankYou,
-  OrderHistory
 } from "./pages";
 import { landingLoader } from "./pages/Landing";
 import { singleProductLoader } from "./pages/SingleProduct";
 import { shopLoader } from "./pages/Shop";
 import { ToastContainer } from "react-toastify";
+import Error from "./pages/Error";
 
 const router = createBrowserRouter([
   {
@@ -66,10 +65,6 @@ const router = createBrowserRouter([
         element: <Cart />,
       },
       {
-        path: "wishlist",
-        element: <Wishlist />,
-      },
-      {
         path: "user-profile",
         element: <Profile />,
       },
@@ -82,8 +77,8 @@ const router = createBrowserRouter([
         element: <ThankYou />
       },
       {
-        path:"order-history",
-        element: <OrderHistory />
+        path:"",
+        element:<Error />
       }
     ],
   },

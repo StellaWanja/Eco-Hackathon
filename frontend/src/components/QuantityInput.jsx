@@ -21,7 +21,7 @@ const QuantityInput = ({ quantity, setQuantity }) => {
         type="number"
         id="Quantity"
         value={quantity}
-        className="h-10 w-24 rounded border-gray-400 border text-xl indent-3"
+        className="h-10 w-24 rounded border-gray-400 text-xl indent-3 bg-[#FEFDED] text-[#40826D] border-2 focus:ring-[#40826D]"
         readOnly={true}
       />
 

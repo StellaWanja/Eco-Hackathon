@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { SectionTitle } from "../components";
 import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { store } from "../store";
 import { loginUser, logoutUser } from "../features/auth/authSlice";
 
@@ -10,7 +10,6 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const loginState = useSelector((state) => state.auth.isLoggedIn);
 
   useEffect(() => {
@@ -40,12 +39,14 @@ const Login = () => {
         .then((res) => res.json())
         .then((res) => {
           let data = res;
-          const foundUser = data.filter(
-            (item) => item.email === email && item.password === password
-          );
-          if (foundUser[0]) {
+          const getUserEmail = localStorage.getItem('email');
+          const getUserPassword = localStorage.getItem('password');
+          // const foundUser = data.filter(
+          //   (item) => item.email === email && item.password === password
+          // );
+          if (getUserEmail && getUserPassword) {
             toast.success("Login successful");
-            localStorage.setItem("id", foundUser[0].id);
+            localStorage.setItem("id", localStorage.getItem('id'));
             store.dispatch(loginUser());
             navigate("/");
           } else {
@@ -60,12 +61,12 @@ const Login = () => {
 
   return (
     <>
-      <SectionTitle title="Login" path="Home | Login" />
-      <div className="flex flex-col justify-center sm:py-12">
+      <SectionTitle title="Login" />
+      <div className="flex flex-col justify-center sm:py-12 bg-[#FEFDED]">
         <div className="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
           <div className="bg-dark border border-gray-600 shadow w-full rounded-lg divide-y divide-gray-200">
             <form className="px-5 py-7" onSubmit={proceedLogin}>
-              <label className="font-semibold text-sm pb-1 block text-accent-content">
+              <label className="font-semibold pb-1 block text-[#40826D] text-lg">
                 E-mail
               </label>
               <input
@@ -73,9 +74,9 @@ const Login = () => {
                 required={true}
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
-                className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
+                className="rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full bg-[#FEFDED] text-[#40826D] border-2 focus:ring-[#40826D]"
               />
-              <label className="font-semibold text-sm pb-1 block text-accent-content">
+              <label className="font-semibold pb-1 block text-[#40826D] text-lg">
                 Password
               </label>
               <input
@@ -83,11 +84,11 @@ const Login = () => {
                 required={true}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
+                className="rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full bg-[#FEFDED] text-[#40826D] border-2 focus:ring-[#40826D]"
               />
               <button
                 type="submit"
-                className="transition duration-200 bg-blue-600 hover:bg-blue-500 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
+                className="transition duration-200 bg-[#40826D] hover:bg-[#23473c]  focus:shadow-sm focus:ring-4  focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
               >
                 <span className="inline-block mr-2">Login</span>
                 <svg
@@ -113,7 +114,7 @@ const Login = () => {
               className="btn btn-neutral text-white"
               onClick={() => window.scrollTo(0, 0)}
             >
-              Don't have an account? Please register.
+              Don&lsquo;t have an account? Please register.
             </Link>
           </div>
         </div>

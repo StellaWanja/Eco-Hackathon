@@ -18,6 +18,7 @@ const Search = () => {
       );
       const data = response.data;
       setProducts(data);
+      console.log(products)
     } catch (error) {
       console.log(error.response);
     }
@@ -36,8 +37,8 @@ const Search = () => {
   }
 
   return (
-    <>
-      <SectionTitle title="Search" path="Home | Search" />
+    <section className="bg-[#FEFDED]">
+      <SectionTitle title="Search" />
 
       <form
         className="form-control max-w-7xl mx-auto py-10 px-10"
@@ -47,12 +48,12 @@ const Search = () => {
           <input
             type="text"
             placeholder="Search here…"
-            className="input input-bordered input-lg w-full outline-0 focus:outline-0"
+            className="input input-bordered input-lg w-full outline-0 focus:outline-0 bg-[#FEFDED] text-[#40826D] border-2 focus:ring-[#40826D]"
             name="search"
           />
           <button
             type="submit"
-            className="btn btn-square btn-lg bg-blue-600 hover:bg-blue-500 text-white"
+            className="btn btn-square btn-lg bg-[#40826D] hover:bg-[#23473c] text-white"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -81,9 +82,8 @@ const Search = () => {
               id={product.id}
               title={product.name}
               image={product.imageUrl}
-              rating={product.rating}
-              price={product.price.current.value}
-              brandName={product.brandName}
+              price={product.price}
+              category={product.category}
             />
           ))}
 
@@ -95,7 +95,7 @@ const Search = () => {
         products={products}
         handleSearchPagination={handleSearchPagination}
       />
-    </>
+    </section>
   );
 };
 
